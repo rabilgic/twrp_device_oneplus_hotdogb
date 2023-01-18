@@ -1,0 +1,6 @@
+ro.display.series=OnePlus 7T
+ro.product.board=msmnile
+ro.board.platform=msmnile
+vendor.gatekeeper.disable_spu=true
+ro.adb.secure=0
+ro.crypto.set_dun=true
