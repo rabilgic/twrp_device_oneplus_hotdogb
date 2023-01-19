@@ -13,13 +13,13 @@ Setup repo tool from here https://source.android.com/setup/develop#installing-re
 ## Sync twrp-11.0 manifest:
 repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
 
-<project name="rabilgic/twrp_device_oneplus_hotdogb" path="device/oneplus/hotdogb" remote="github" revision="android-11" />
+<project name="rabilgic/twrp_device_oneplus_hotdogb" path="device/oneplus/hotdogb" remote="github" revision="Android-11" />
 
 ## Sync the sources with:
 repo sync
 
 ## To build, execute these commands in order:
-cd <source-dir>; export ALLOW_MISSING_DEPENDENCIES=true; . build/envsetup.sh; lunch twrp_<device>-eng; mka recoveryimage
+cd <source-dir>;. build/envsetup.sh; lunch; mka recoveryimage
 ```
 
 ## To test it:
