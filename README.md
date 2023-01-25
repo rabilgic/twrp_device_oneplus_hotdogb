@@ -19,7 +19,7 @@ repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aos
 repo sync
 
 ## To build, execute these commands in order:
-cd <source-dir>;. build/envsetup.sh; lunch; mka recoveryimage
+cd <source-dir>;. build/envsetup.sh; lunch twrp_hotdogb-eng; mka recoveryimage
 ```
 
 ## To test it:
