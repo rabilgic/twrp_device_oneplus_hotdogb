@@ -36,7 +36,7 @@ fastboot flash recovery recovery.img
 ### Not Working
 -
 
-### Kernel Source: precompiled stock one
+### Kernel Source: precompiled los kernel
 
 ### Credits
 - lossyx for original trees
