@@ -10,7 +10,7 @@ Setup repo tool from here https://source.android.com/setup/develop#installing-re
 
 ## Compile:
 ```
-## Sync twrp-11.0 manifest:
+## Sync twrp-12.1 manifest:
 repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
 
 <project name="rabilgic/twrp_device_oneplus_hotdogb" path="device/oneplus/hotdogb" remote="github" revision="Android-12.1" />
