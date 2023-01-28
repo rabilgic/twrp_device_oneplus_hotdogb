@@ -18,6 +18,7 @@
 
 # AVB partitions
 /dtbo				emmc				/dev/block/bootdevice/by-name/dtbo					flags=slotselect;display="DTBO";backup=1;flashimg=1
+/vbmeta				emmc				/dev/block/bootdevice/by-name/vbmeta					flags=slotselect;display="VBMeta";backup=1;flashimg=1
 
 # EFS Partitions
 /efs1          		  	emmc       		        /dev/block/bootdevice/by-name/modemst1              			flags=backup=1;display=EFS
