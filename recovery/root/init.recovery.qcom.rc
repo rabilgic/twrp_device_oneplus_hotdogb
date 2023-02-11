@@ -47,15 +47,22 @@ service make-fake-partitions-service /system/bin/make-fake-partitions-service.sh
     oneshot
     seclabel u:r:recovery:s0
 
+service systemcheck /system/bin/systemcheck.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
 
 on init
     start systemcheck
     write /sys/class/backlight/panel0-backlight/brightness 200
-    start boot-hal-1-1
     setprop sys.usb.config adb
-    # Create location for fs_mgr to store abbreviated output from filesystem
-    # checker programs.
     mkdir /dev/fscklogs 0770 root system
+    setprop prepdecrypt.loglevel 2
+
+on post-fs
+    start boot-hal-1-0
 
 on boot
     setprop sys.usb.config adb
@@ -68,8 +75,6 @@ on boot
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-
-    # This must be under on fs, otherwise update_engine wont map the partitions and exit installation
     symlink /dev/block/bootdevice/by-name/mdm_oem_stanvbk /dev/block/bootdevice/by-name/mdm_oem_stanvbk_a
     symlink /dev/block/bootdevice/by-name/mdm_oem_stanvbk /dev/block/bootdevice/by-name/mdm_oem_stanvbk_b
     symlink /dev/block/bootdevice/by-name/mdm_oem_dycnvbk /dev/block/bootdevice/by-name/mdm_oem_dycnvbk_a
@@ -80,13 +85,3 @@ on fs
     # Set fscklog permission
     chown root system /dev/fscklogs/log
     chmod 0770 /dev/fscklogs/log
-
-on property:twrp.super.symlinks_created=true
-    start systemcheck
-
-service systemcheck /system/bin/systemcheck.sh
-    user root
-    group root
-    disabled
-    oneshot
-    seclabel u:r:recovery:s0
