@@ -23,6 +23,9 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
+# Define hardware platform
+PRODUCT_PLATFORM := msmnile
+
 # Inherit from common AOSP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
@@ -46,3 +49,6 @@ PRODUCT_NAME := twrp_hotdogb
 PRODUCT_BRAND := oneplus
 PRODUCT_MODEL := HD1900
 PRODUCT_MANUFACTURER := oneplus
+
+# Device path for OEM device tree
+DEVICE_PATH := device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)
