@@ -57,24 +57,21 @@ service systemcheck /system/bin/systemcheck.sh
 on init
     start systemcheck
     write /sys/class/backlight/panel0-backlight/brightness 200
+    start boot-hal-1-1
     setprop sys.usb.config adb
     mkdir /dev/fscklogs 0770 root system
     setprop prepdecrypt.loglevel 2
 
-on post-fs
-    start boot-hal-1-0
-
 on boot
     setprop sys.usb.config adb
-    start health-hal-2-1
-    chmod 0777 /system/bin/unified-script.sh
-    start unified-script
     chmod 0777 /system/bin/make-fake-partitions-service.sh
     start make-fake-partitions-service
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
+    # This must be under on fs, otherwise update_engine wont map the partitions and exit installation
     symlink /dev/block/bootdevice/by-name/mdm_oem_stanvbk /dev/block/bootdevice/by-name/mdm_oem_stanvbk_a
     symlink /dev/block/bootdevice/by-name/mdm_oem_stanvbk /dev/block/bootdevice/by-name/mdm_oem_stanvbk_b
     symlink /dev/block/bootdevice/by-name/mdm_oem_dycnvbk /dev/block/bootdevice/by-name/mdm_oem_dycnvbk_a
