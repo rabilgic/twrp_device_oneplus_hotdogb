@@ -41,6 +41,9 @@ on init
     # checker programs.
     mkdir /dev/fscklogs 0770 root system
 
+on init
+    setprop prepdecrypt.loglevel 2
+
 on boot
     setprop sys.usb.config adb
     chmod 0777 /system/bin/unified-script.sh
