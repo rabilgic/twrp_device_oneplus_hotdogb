@@ -32,9 +32,16 @@ fastboot flash recovery recovery.img
 ```
 
 ### Working
--
-### Not Working
--
+- Decryption working (OOS11)
+- ADB Sideload
+- MTP is working
+- ADB is working
+- Vibration working
+- Flashing zips (Stock Rom & Magisk)
+- Format Data
+- Backup
+### Needs some testing
+- Restore
 
 ### Kernel Source: precompiled stock one
 
