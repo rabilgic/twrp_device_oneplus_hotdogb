@@ -10,6 +10,16 @@ vendor                                                  /vendor                e
 odm                                                     /odm                   ext4    ro,barrier=1,discard                                 wait,slotselect,logical,first_stage_mount,avb_keys=/vendor/etc/oplus_avb.pubkey
 odm                                                     /odm                   erofs    ro                                 wait,slotselect,logical,first_stage_mount,avb_keys=/vendor/etc/oplus_avb.pubkey
 /dev/block/by-name/metadata                             /metadata              ext4    noatime,nosuid,nodev,discard                         wait,formattable,first_stage_mount
-/dev/block/bootdevice/by-name/userdata                  /data                  ext4    noatime,nosuid,nodev,barrier=1,noauto_da_alloc,discard,inlinecrypt latemount,wait,resize,check,formattable,fileencryption=ice,keydirectory=/metadata/vold/metadata_encryption,quota,reservedsize=128M,checkpoint=block
+/dev/block/bootdevice/by-name/userdata                  /data                  ext4    noatime,nosuid,nodev,barrier=1,noauto_da_alloc,discard,inlinecrypt latemount,wait,check,fileencryption=ice,keydirectory=/metadata/vold/metadata_encryption,quota,reservedsize=128M,checkpoint=block
 /dev/block/bootdevice/by-name/misc                      /misc                  emmc    defaults                                             defaults
 /dev/block/by-name/op2      				/op2         		ext4   nosuid,nodev,noatime,barrier=1,data=ordered                           wait,check,first_stage_mount,nofail
+my_product         /my_product   erofs       ro  wait,slotselect,logical,first_stage_mount,avb_keys=/vendor/etc/oplus_avb.pubkey,nofail
+my_engineering     /my_engineering erofs     ro  wait,slotselect,logical,first_stage_mount,avb_keys=/vendor/etc/oplus_avb.pubkey,nofail
+my_company         /my_company   erofs       ro  wait,slotselect,logical,first_stage_mount,avb_keys=/vendor/etc/oplus_avb.pubkey,nofail
+my_carrier        /my_carrier  erofs    ro  wait,slotselect,logical,first_stage_mount,avb_keys=/vendor/etc/oplus_avb.pubkey,nofail
+my_region         /my_region   erofs    ro  wait,slotselect,logical,first_stage_mount,avb_keys=/vendor/etc/oplus_avb.pubkey,nofail
+my_heytap          /my_heytap    erofs    ro  wait,slotselect,logical,first_stage_mount,avb_keys=/vendor/etc/oplus_avb.pubkey,nofail
+my_stock           /my_stock     erofs    ro  wait,slotselect,logical,first_stage_mount,avb_keys=/vendor/etc/oplus_avb.pubkey,nofail
+my_preload         /my_preload   erofs    ro  wait,slotselect,logical,first_stage_mount,avb_keys=/vendor/etc/oplus_avb.pubkey,nofail
+my_bigball         /my_bigball   erofs       ro  wait,slotselect,logical,first_stage_mount,avb_keys=/vendor/etc/oplus_avb.pubkey,nofail
+my_manifest        /my_manifest  erofs    ro  wait,slotselect,logical,first_stage_mount,avb_keys=/vendor/etc/oplus_avb.pubkey,nofail

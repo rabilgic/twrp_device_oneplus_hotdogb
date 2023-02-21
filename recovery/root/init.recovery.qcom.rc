@@ -1,5 +1,7 @@
 # Copyright (c) 2009-2012, 2014-2015, The Linux Foundation. All rights reserved.
 #
+# Copyright (C) 2020-2022 The OrangeFox Recovery Project
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
 #     * Redistributions of source code must retain the above copyright
@@ -25,22 +27,10 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+
 import /init.recovery.qcom_decrypt.rc
-	
-service hal_cryptoeng_oplus /system/bin/hw/vendor.oplus.hardware.cryptoeng@1.0-service
-    class late_start
-    user system
-    group system input sdcard_rw sdcard_r
-    seclabel u:r:recovery:s0
 
 service unified-script /system/bin/unified-script.sh
-    user root
-    group root
-    disabled
-    oneshot
-    seclabel u:r:recovery:s0
-
-service make-fake-partitions-service /system/bin/make-fake-partitions-service.sh reserve
     user root
     group root
     disabled
@@ -53,11 +43,6 @@ on init
     setprop sys.usb.config adb
     mkdir /dev/fscklogs 0770 root system
     setprop prepdecrypt.loglevel 2
-
-on boot
-    setprop sys.usb.config adb
-    chmod 0777 /system/bin/make-fake-partitions-service.sh
-    start make-fake-partitions-service
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -74,3 +59,10 @@ on fs
     # Set fscklog permission
     chown root system /dev/fscklogs/log
     chmod 0770 /dev/fscklogs/log
+
+on boot
+    start health-hal-2-1
+    chmod 0777 /system/bin/unified-script.sh
+    start unified-script
+    setprop sys.usb.config adb
+#
