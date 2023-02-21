@@ -44,4 +44,5 @@ fastboot flash recovery recovery.img
 - nebrassy for original trees
 - mauronofrio for original trees.
 - CaptainThrowback for original trees.
+- OrangeFox team for amazing work.
 - TWRP team and everyone involved for their amazing work.
