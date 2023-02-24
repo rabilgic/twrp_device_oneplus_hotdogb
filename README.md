@@ -32,17 +32,18 @@ fastboot flash recovery recovery.img
 ```
 
 ### Working
-- Decryption working (OOS12)
-- ADB Sideload
-- MTP is working
-- ADB is working
-- Vibration working
-- Flashing zips (Magisk)
+- OrangeFox Alpha A13 Test Version
 ### Needs some testing.
+- Decryption (A13)
+- ADB Sideload
+- MTP 
+- ADB 
+- Vibration
+- Flashing rom&zips
 - Format Data
 - Wipe
 - Backup/Restore
-- Flashing rom
+- .....
 ### Kernel Source: precompiled stock one
 
 ### Credits
