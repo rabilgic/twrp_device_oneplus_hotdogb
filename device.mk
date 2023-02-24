@@ -1,116 +1,93 @@
 #
-# Copyright (C) 2017 The Android Open Source Project
+#	This file is part of the OrangeFox Recovery Project
+# 	Copyright (C) 2020-2023 The OrangeFox Recovery Project
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+#	OrangeFox is free software: you can redistribute it and/or modify
+#	it under the terms of the GNU General Public License as published by
+#	the Free Software Foundation, either version 3 of the License, or
+#	any later version.
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+#	OrangeFox is distributed in the hope that it will be useful,
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#	GNU General Public License for more details.
 #
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# 	This software is released under GPL version 3 or any later version.
+#	See <http://www.gnu.org/licenses/>.
+#
+# 	Please maintain this if you use this script or any part of it
 #
 
-# This contains the module build definitions for the hardware-specific
-# components for this device.
-#
-# As much as possible, those components should be built unconditionally,
-# with device-specific names to avoid collisions, to avoid device-specific
-# bitrot and build breakages. Building a component unconditionally does
-# *not* include it on all devices, so it is safe even with hardware-specific
-# components.
+# fscrypt policy
+TW_USE_FSCRYPT_POLICY := 2
 
-# Inherit from common AOSP config
-$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+# shipping API
+PRODUCT_SHIPPING_API_LEVEL := 29
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+# A/B support
+AB_OTA_UPDATER := true
 
-# Enable virtual A/B OTA
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+AB_OTA_PARTITIONS += \
+    boot \
+    dtbo \
+    odm \
+    product \
+    system \
+    system_ext \
+    vbmeta \
+    vbmeta_system \
+    vbmeta_vendor \
+    vendor \
+    vendor_boot \
+    vendor_dlkm
 
-LOCAL_PATH := device/oneplus/hotdogb
+# dynamic partition stuff
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# define hardware platform
-PRODUCT_PLATFORM := msmnile
+# Exclude Apex
+TW_EXCLUDE_APEX := true
 
-#SHIPPING API
-PRODUCT_SHIPPING_API_LEVEL := 30
-
-#VNDK API
-PRODUCT_TARGET_VNDK_VERSION := 32
-
-# A/B
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=erofs \
-    POSTINSTALL_OPTIONAL_system=true
- 
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_vendor=true \
-    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=erofs \
-    POSTINSTALL_OPTIONAL_vendor=true
-
-# Boot control HAL
-PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl \
-    android.hardware.boot@1.2-service \
-    android.hardware.boot@1.2-impl-wrapper.recovery \
-    android.hardware.boot@1.2-impl-wrapper \
-    android.hardware.boot@1.2-impl.recovery \
-    bootctrl.$(PRODUCT_PLATFORM) \
-    bootctrl.$(PRODUCT_PLATFORM).recovery
-
-PRODUCT_PACKAGES += \
-    otapreopt_script \
-    cppreopts.sh \
-    update_engine \
-    update_verifier \
-    checkpoint_gc \
-    update_engine_sideload
-
-# qcom decryption
+# decryption
 PRODUCT_PACKAGES += \
     qcom_decrypt \
     qcom_decrypt_fbe
-    
-#Display	
+
+# fastbootd stuff
+PRODUCT_PACKAGES += \
+    fastbootd \
+    android.hardware.fastboot@1.0-impl-mock \
+    android.hardware.fastboot@1.0-impl-mock.recovery
+
+# for Android 11 manifests
 PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/commonsys-intf/display
-	
+
+# device asserts
+#TARGET_OTA_ASSERT_DEVICE := hotdogb,hotdog,hotdogg
+
+# crypto
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
+BOARD_USES_METADATA_PARTITION := true
+BOARD_USES_QCOM_FBE_DECRYPTION := true
+
+PLATFORM_VERSION := 99.87.36
+PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
+
+PLATFORM_SECURITY_PATCH := 2099-12-31
+VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
+
+# Recovery
+TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
+TARGET_USES_MKE2FS := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+
+# Libraries
+TARGET_RECOVERY_DEVICE_MODULES += libion vendor.display.config@1.0 vendor.display.config@2.0 libdisplayconfig.qti
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/libdisplayconfig.qti.so
-
-# Dynamic partitions
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-
-# fastbootd
-PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock \
-    fastbootd \
-    resetprop
-
-# Hidl Service
-PRODUCT_ENFORCE_VINTF_MANIFEST := true
-
-# Soong namespaces
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
-    
-# tzdata
-PRODUCT_PACKAGES_ENG += \
-    tzdata_twrp
-
-#TWRP
-PRODUCT_COPY_FILES += \
-    device/oneplus/hotdogb/prebuilt/systemmanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/manifest.xml \
-    device/oneplus/hotdogb/prebuilt/vendormanifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/manifest.xml
+#

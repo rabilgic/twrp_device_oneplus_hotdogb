@@ -1,4 +1,4 @@
-<!-- Copyright (c) 2018-2019 The Linux Foundation. All rights reserved.
+<!-- Copyright (c) 2020 The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -26,14 +26,8 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <manifest version="1.0" type="device">
-    <!-- CapabilityConfigStore HAL Service  -->
-    <hal format="hidl">
-        <name>vendor.oplus.hardware.cameraMDM</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IOPlusCameraMDM</name>
-            <instance>default</instance>
-        </interface>
+    <hal format="aidl">
+        <name>android.hardware.vibrator</name>
+        <fqname>IVibrator/default</fqname>
     </hal>
 </manifest>

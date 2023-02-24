@@ -32,16 +32,24 @@ fastboot flash recovery recovery.img
 ```
 
 ### Working
--
-### Not Working
--
-
-### Kernel Source: precompiled yaap kernel
+- Decryption working (OOS12)
+- ADB Sideload
+- MTP is working
+- ADB is working
+- Vibration working
+- Flashing zips (Magisk)
+### Needs some testing.
+- Format Data
+- Wipe
+- Backup/Restore
+- Flashing rom
+### Kernel Source: precompiled stock one
 
 ### Credits
+- darthjabba9 for original trees
 - lossyx for original trees
 - nebrassy for original trees
-- apophis9283 for original trees
 - mauronofrio for original trees.
 - CaptainThrowback for original trees.
+- OrangeFox team for amazing work.
 - TWRP team and everyone involved for their amazing work.
