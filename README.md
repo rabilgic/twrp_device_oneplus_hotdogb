@@ -44,7 +44,7 @@ fastboot flash recovery recovery.img
 - Wipe
 - Backup/Restore
 - .....
-### Kernel Source: precompiled stock one
+### Kernel Source: precompiled yaap kernel
 
 ### Credits
 - darthjabba9 for original trees
