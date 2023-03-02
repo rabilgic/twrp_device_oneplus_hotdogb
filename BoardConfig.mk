@@ -48,7 +48,8 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno640
 QCOM_BOARD_PLATFORMS += msmnile
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3 kpti=off androidboot.vbmeta.avb_version=1.0 buildvariant=user
+BOARD_KERNEL_CMDLINE := androidboot.console=ttyMSM0 androidboot.hardware=qcom androidboot.memcg=1 androidboot.usbcontroller=a600000.dwc3 androidboot.vbmeta.avb_version=1.0 loop.max_part=7 lpm_levels.sleep_disabled=1 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 buildvariant=userdebug
+
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_BOOT_HEADER_VERSION := 2
@@ -90,7 +91,6 @@ BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 7516192768
 BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product vendor system system_ext
 
 # System as root
-#BOARD_ROOT_EXTRA_FOLDERS := bluetooth dsp firmware persist
 BOARD_SUPPRESS_SECURE_ERASE := true
 
 # File systems
@@ -99,29 +99,41 @@ TARGET_USERIMAGES_USE_F2FS := true
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_ODM := odm
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
-RECOVERY_SDCARD_ON_DATA := true
+TW_EXCLUDE_ENCRYPTED_BACKUPS := false
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_NTFS_3G := true
+TW_NO_EXFAT_FUSE := true
 TW_USE_TOOLBOX := true
+TW_INCLUDE_REPACKTOOLS := true
+TW_HAS_EDL_MODE := true
+TW_INCLUDE_FASTBOOTD := true
+TW_INCLUDE_RESETPROP := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 TW_MAX_BRIGHTNESS := 2047
-TW_DEFAULT_BRIGHTNESS := 1000
+TW_DEFAULT_BRIGHTNESS := 420
 TW_Y_OFFSET := 80
 TW_H_OFFSET := -80
+TW_BACKUP_EXCLUSIONS := /data/fonts/,/data/nandswap
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TW_EXCLUDE_TWRPAPP := true
 TW_NO_SCREEN_BLANK := true
 TW_SCREEN_BLANK_ON_BOOT := true
+BOARD_HAS_NO_REAL_SDCARD := true
+RECOVERY_SDCARD_ON_DATA := true
 
 # AVB stuff
 BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem

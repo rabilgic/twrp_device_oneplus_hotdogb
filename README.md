@@ -32,7 +32,7 @@ fastboot flash recovery recovery.img
 ```
 
 ### Working
-- OrangeFox Alpha A13 Test Version
+- Twrp A13 Test Version
 ### Needs some testing.
 - Decryption (A13)
 - ADB Sideload
@@ -44,7 +44,7 @@ fastboot flash recovery recovery.img
 - Wipe
 - Backup/Restore
 - .....
-### Kernel Source: precompiled yaap kernel
+### Kernel Source: precompiled los kernel
 
 ### Credits
 - darthjabba9 for original trees
