@@ -44,7 +44,7 @@ fastboot flash recovery recovery.img
 - Vibration
 ### Needs some testing.
 - .....
-### Kernel Source: precompiled stock kernel
+### Kernel Source: precompiled yaap kernel
 
 ### Credits
 - darthjabba9 for clean original trees
