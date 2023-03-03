@@ -62,9 +62,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/commonsys-intf/display
 
-# device asserts
-#TARGET_OTA_ASSERT_DEVICE := hotdogb,hotdog,hotdogg
-
 # crypto
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true

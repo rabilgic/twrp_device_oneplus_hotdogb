@@ -1,1 +1,2 @@
-ro.display.series=OnePlus 7T
+# QC framework value-adds
+ro.vendor.qti.va_aosp.support=1
