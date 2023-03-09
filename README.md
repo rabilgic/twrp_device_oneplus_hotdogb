@@ -1,4 +1,4 @@
-# Device Tree for OnePlus 7T aka Hotdogb for TWRP
+# Device Tree for OnePlus 7T aka Hotdogb for OrangeFox TWRP
 
 ## Disclaimer
 These are personal test builds of mine. In no way do I hold responsibility if it/you messes up your device. Proceed at your own risk.
@@ -10,10 +10,10 @@ Setup repo tool from here https://source.android.com/setup/develop#installing-re
 
 ## Compile:
 ```
-## Sync twrp-12.1 manifest:
-repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
+## Sync twrp-11.0 manifest:
+repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11.0
 
-<project name="rabilgic/twrp_device_oneplus_hotdogb" path="device/oneplus/hotdogb" remote="github" revision="Android-12.1" />
+<project name="rabilgic/twrp_device_oneplus_hotdogb" path="device/oneplus/hotdogb" remote="github" revision="Android-11.0" />
 
 ## Sync the sources with:
 repo sync
@@ -32,7 +32,7 @@ fastboot flash recovery recovery.img
 ```
 
 ### Working
-- Decryption (OOS12)
+- Decryption (OOS11)
 - Flashing rom&zips
 - Backup/Restore
 - Format Data
