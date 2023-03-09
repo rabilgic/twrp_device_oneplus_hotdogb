@@ -32,10 +32,6 @@ TARGET_2ND_CPU_VARIANT := cortex-a55
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
-# 64-bit
-TARGET_SUPPORTS_64_BIT_APPS := true
-TARGET_IS_64_BIT := true
-
 # Bootloader
 PRODUCT_PLATFORM := msmnile
 TARGET_BOOTLOADER_BOARD_NAME := msmnile
@@ -49,7 +45,16 @@ QCOM_BOARD_PLATFORMS += msmnile
 
 # Kernel
 BOARD_KERNEL_CMDLINE := \
-console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0xa90000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3 buildvariant=user
+    androidboot.console=ttyMSM0 \
+    androidboot.hardware=qcom \
+    androidboot.memcg=1 \
+    androidboot.usbcontroller=a600000.dwc3 \
+    lpm_levels.sleep_disabled=1 \
+    msm_rtb.filter=0x237 \
+    firmware_class.path=/vendor/firmware_mnt/image \
+    service_locator.enable=1 \
+    swiotlb=2048 \
+    video=vfb:640x400,bpp=32,memsize=3072000
 
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
@@ -127,7 +132,6 @@ TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 420
 TW_Y_OFFSET := 80
 TW_H_OFFSET := -80
-TW_BACKUP_EXCLUSIONS := /data/fonts/,/data/nandswap
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TW_EXCLUDE_TWRPAPP := true
@@ -143,10 +147,4 @@ BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
-
-# cure for "ELF binaries" problems
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-
-# deal with "error: overriding commands for target" problems
-BUILD_BROKEN_DUP_RULES := true
 #
