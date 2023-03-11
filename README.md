@@ -43,7 +43,7 @@ fastboot flash recovery recovery.img
 - ADB 
 - Vibration
 ### Needs some testing.
-- .....
+- Restore data bootloop on OOS12
 ### Kernel Source: precompiled stock kernel
 
 ### Credits
