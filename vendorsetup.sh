@@ -75,5 +75,6 @@
 	export OF_CLOCK_POS=1
 	
 	# R11.1 Settings
-	export FOX_VERSION="R11.0_OOS11"
-	export OF_MAINTAINER="rabilgic"	  
+	export FOX_VERSION="R11.1_OOS11"
+	export OF_MAINTAINER="rabilgic"
+	export OF_MAINTAINER_AVATAR="/home/bim/bim6/rabilgic.png"
