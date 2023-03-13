@@ -78,3 +78,4 @@
 	export FOX_VERSION="R11.1_OOS11"
 	export OF_MAINTAINER="rabilgic"
 	export OF_MAINTAINER_AVATAR="/home/bim/bim6/rabilgic.png"
+	export OUT_DIR="/home/bim/bim6/OrangeFox/fox_11.0/out"
