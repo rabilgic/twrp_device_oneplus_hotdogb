@@ -44,7 +44,7 @@ fastboot flash recovery recovery.img
 - Wipe
 - Backup/Restore
 - .....
-### Kernel Source: precompiled los kernel
+### Kernel Source: precompiled kernel
 
 ### Credits
 - darthjabba9 for original trees
