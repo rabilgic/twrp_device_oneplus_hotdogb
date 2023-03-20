@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 	export FOX_BUILD_DEVICE="OnePlus7T"
-	export TARGET_DEVICE_ALT="hotdogb,hotdog,hotdogg,OnePlus7T,Oneplus7TPro"
+	export TARGET_DEVICE_ALT="hotdogb, hotdog, hotdogg, OnePlus7T, Oneplus7TPro"
    	export TW_DEFAULT_LANGUAGE="en"
 	export LC_ALL="C"
 	export OF_AB_DEVICE_WITH_RECOVERY_PARTITION=1
