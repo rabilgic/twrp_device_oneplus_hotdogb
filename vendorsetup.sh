@@ -13,14 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-	export FDEVICE="hotdogb"
+	export FOX_BUILD_DEVICE="OnePlus7T"
+	export TARGET_DEVICE_ALT="hotdogb,hotdog,hotdogg,OnePlus7T,Oneplus7TPro"
    	export TW_DEFAULT_LANGUAGE="en"
 	export LC_ALL="C"
-	export FOX_DEVICE="hotdogb"
 	export OF_AB_DEVICE_WITH_RECOVERY_PARTITION=1
  	export ALLOW_MISSING_DEPENDENCIES=true
 	export OF_AB_DEVICE=1
-	export TARGET_DEVICE_ALT="hotdogb,hotdog,hotdogg"
 	export FOX_REPLACE_TOOLBOX_GETPROP=1
 	export OF_FBE_METADATA_MOUNT_IGNORE=1
 
