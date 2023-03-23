@@ -14,7 +14,8 @@
 # limitations under the License.
 #
 	export FOX_BUILD_DEVICE="OnePlus7T"
-	export TARGET_DEVICE_ALT="hotdogb, hotdog, hotdogg, OnePlus7T, Oneplus7TPro"
+	export TARGET_DEVICE_ALT="hotdogb, hotdog, hotdogg, OnePlus7T, Oneplus7TPro, OnePlus 7T, Oneplus 7T Pro"
+	export OF_TARGET_DEVICES="hotdogb, hotdog, hotdogg, OnePlus7T, Oneplus7TPro, OnePlus 7T, Oneplus 7T Pro"
    	export TW_DEFAULT_LANGUAGE="en"
 	export LC_ALL="C"
 	export OF_AB_DEVICE_WITH_RECOVERY_PARTITION=1
@@ -28,6 +29,7 @@
 	export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
 	export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
 	export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
+	export OF_NO_ADDITIONAL_MIUI_PROPS_CHECK=1
 	export OF_NO_MIUI_PATCH_WARNING=1
 	export FOX_USE_BASH_SHELL=1
 	export OF_PATCH_AVB20=1
